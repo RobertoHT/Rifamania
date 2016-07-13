@@ -14,7 +14,8 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/FACEBOOK_APP_ID" />
-        <activity android:name=".LoginActivity">
+
+        <activity android:name=".login.ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,6 +32,8 @@
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="@string/FACEBOOK_PROVIDER_AUTH"
             android:exported="true" />
+
+        <activity android:name=".RifaMainActivity"></activity>
     </application>
 
 </manifest>
