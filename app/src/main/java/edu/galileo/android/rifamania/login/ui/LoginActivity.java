@@ -19,7 +19,7 @@ import java.util.Arrays;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.rifamania.R;
-import edu.galileo.android.rifamania.RifaMainActivity;
+import edu.galileo.android.rifamania.rifamain.ui.RifaMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,7 +1,9 @@
-package edu.galileo.android.rifamania;
+package edu.galileo.android.rifamania.rifamain.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import edu.galileo.android.rifamania.R;
 
 public class RifaMainActivity extends AppCompatActivity {
 
