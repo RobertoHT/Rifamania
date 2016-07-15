@@ -54,10 +54,14 @@ public class RifaMainPresenterImpl implements RifaMainPresenter{
         if(this.view != null){
             switch (event.getType()){
                 case RifaMainEvent.READ_EVENT:
+                    view.setRifas(event.getRifaList());
                     break;
                 case RifaMainEvent.SAVE_EVENT:
+                    view.onRifaSaved();
                     break;
                 case RifaMainEvent.DELETE_EVENT:
+                    Rifa rifa = event.getRifaList().get(0);
+                    view.onRifaDeleted(rifa);
                     break;
             }
         }
