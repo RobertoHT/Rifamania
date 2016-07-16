@@ -7,5 +7,5 @@ import edu.galileo.android.rifamania.entities.ItemRifa;
  */
 
 public interface OnItemListClickListener {
-    void onPayClick(ItemRifa item);
+    void onUpdateClick(ItemRifa item);
 }
