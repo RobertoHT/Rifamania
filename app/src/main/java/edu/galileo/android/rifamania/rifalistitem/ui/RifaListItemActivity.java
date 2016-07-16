@@ -24,8 +24,10 @@ import edu.galileo.android.rifamania.rifalistitem.RifaListItemPresenter;
 import edu.galileo.android.rifamania.rifalistitem.adapters.OnItemListClickListener;
 import edu.galileo.android.rifamania.rifalistitem.adapters.RifaListAdapter;
 import edu.galileo.android.rifamania.rifalistitem.di.RifaListItemComponent;
+import edu.galileo.android.rifamania.rifalistitem.dialog.ClickItemListenerDialog;
+import edu.galileo.android.rifamania.rifalistitem.dialog.RifaListItemDialog;
 
-public class RifaListItemActivity extends AppCompatActivity implements RifaListItemView, OnItemListClickListener {
+public class RifaListItemActivity extends AppCompatActivity implements RifaListItemView, OnItemListClickListener, ClickItemListenerDialog {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.recyclerView)
@@ -38,6 +40,7 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
     private RifaListAdapter adapter;
     private RifaListItemPresenter presenter;
     private RifaListItemComponent component;
+    private RifaListItemDialog dialog;
 
     private String nameItem;
     private int idItem;
@@ -111,6 +114,8 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
     @OnClick(R.id.plusList)
     public void addItemRifa(){
         Log.d("CLICK ITEM","msg");
+        dialog = new RifaListItemDialog();
+        dialog.show(getFragmentManager(), "Simple Dialog");
     }
 
     public RifaListItemPresenter getPresenter(){
@@ -119,5 +124,10 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
 
     public RifaListAdapter getAdapter(){
         return component.getAdapter();
+    }
+
+    @Override
+    public void onDialogPositiveClick(ItemRifa itemRifa) {
+
     }
 }
