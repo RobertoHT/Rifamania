@@ -1,5 +1,6 @@
 package edu.galileo.android.rifamania.rifamain.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,12 +22,15 @@ import butterknife.OnClick;
 import edu.galileo.android.rifamania.R;
 import edu.galileo.android.rifamania.RifamaniaApp;
 import edu.galileo.android.rifamania.entities.Rifa;
+import edu.galileo.android.rifamania.rifalistitem.RifaListItemActivity;
 import edu.galileo.android.rifamania.rifamain.RifaMainPresenter;
 import edu.galileo.android.rifamania.rifamain.adapters.OnItemCLickListener;
 import edu.galileo.android.rifamania.rifamain.adapters.RifasAdapter;
 import edu.galileo.android.rifamania.rifamain.di.RifaMainComponent;
+import edu.galileo.android.rifamania.rifamain.dialog.ClickListenerDialog;
+import edu.galileo.android.rifamania.rifamain.dialog.RifaMainDialog;
 
-public class RifaMainActivity extends AppCompatActivity implements RifaMainView, OnItemCLickListener {
+public class RifaMainActivity extends AppCompatActivity implements RifaMainView, OnItemCLickListener, ClickListenerDialog {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -42,6 +46,7 @@ public class RifaMainActivity extends AppCompatActivity implements RifaMainView,
     private RifasAdapter adapter;
     private RifaMainPresenter presenter;
     private RifaMainComponent component;
+    private RifaMainDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,16 +138,38 @@ public class RifaMainActivity extends AppCompatActivity implements RifaMainView,
 
     @Override
     public void onItemCLick(Rifa rifa) {
-        Log.d("CLICK ITEM",rifa.getName());
+        navigateToItemsRifa(rifa);
     }
 
     @Override
     public void onDeleteClick(Rifa rifa) {
-        Log.d("CLICK DELETE",rifa.getName());
+        presenter.removeRifa(rifa);
     }
 
     @OnClick(R.id.plus)
     public void addRifa(){
-        Log.d("CLICK PLUS","click");
+        dialog = new RifaMainDialog();
+        dialog.show(getFragmentManager(), "SimpleDialog");
+    }
+
+    @Override
+    public void onDialogPositiveClick(String name, int cost, String fecha) {
+        Rifa r = new Rifa();
+        r.setName(name);
+        r.setCost(cost);
+        r.setDate(fecha);
+        presenter.saveFirma(r);
+    }
+
+    @Override
+    public void onDialogNegativeClick() {
+
+    }
+
+    private void navigateToItemsRifa(Rifa rifa){
+        Intent intent = new Intent(this, RifaListItemActivity.class);
+        intent.putExtra("id",rifa.getId());
+        intent.putExtra("nombre",rifa.getName());
+        startActivity(intent);
     }
 }

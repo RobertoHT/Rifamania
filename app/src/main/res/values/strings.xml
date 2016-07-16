@@ -5,4 +5,7 @@
     <string name="rifa.data.error">Imposible obtener información %s</string>
     <string name="rifamain.notice.saved">Guardado exitosamente</string>
     <string name="global.menu.action.logout">Cerrar sesión</string>
+    <string name="dialog.name">Nombre:</string>
+    <string name="dialog.date">Fecha:</string>
+    <string name="dialog.cost">Precio:</string>
 </resources>

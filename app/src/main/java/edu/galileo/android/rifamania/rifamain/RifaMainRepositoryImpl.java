@@ -1,5 +1,7 @@
 package edu.galileo.android.rifamania.rifamain;
 
+import android.util.Log;
+
 import com.raizlabs.android.dbflow.list.FlowCursorList;
 
 import java.util.Arrays;
@@ -31,7 +33,8 @@ public class RifaMainRepositoryImpl implements RifaMainRepository {
     @Override
     public void saveRifa(Rifa rifa) {
         rifa.save();
-        post();
+        Log.d("ID RIFA",String.valueOf(rifa.getId()));
+        post(RifaMainEvent.SAVE_EVENT, rifa);
     }
 
     @Override
@@ -47,9 +50,10 @@ public class RifaMainRepositoryImpl implements RifaMainRepository {
         eventBus.post(event);
     }
 
-    private void post() {
+    private void post(int type, Rifa rifa) {
         RifaMainEvent event = new RifaMainEvent();
-        event.setType(RifaMainEvent.SAVE_EVENT);
+        event.setType(type);
+        event.setRifa(rifa);
         eventBus.post(event);
     }
 }
