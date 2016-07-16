@@ -36,7 +36,7 @@
         <activity
             android:name=".rifamain.ui.RifaMainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".rifalistitem.RifaListItemActivity"></activity>
+        <activity android:name=".rifalistitem.ui.RifaListItemActivity"></activity>
     </application>
 
 </manifest>

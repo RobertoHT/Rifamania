@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -22,7 +21,7 @@ import butterknife.OnClick;
 import edu.galileo.android.rifamania.R;
 import edu.galileo.android.rifamania.RifamaniaApp;
 import edu.galileo.android.rifamania.entities.Rifa;
-import edu.galileo.android.rifamania.rifalistitem.RifaListItemActivity;
+import edu.galileo.android.rifamania.rifalistitem.ui.RifaListItemActivity;
 import edu.galileo.android.rifamania.rifamain.RifaMainPresenter;
 import edu.galileo.android.rifamania.rifamain.adapters.OnItemCLickListener;
 import edu.galileo.android.rifamania.rifamain.adapters.RifasAdapter;
@@ -106,11 +105,6 @@ public class RifaMainActivity extends AppCompatActivity implements RifaMainView,
     @Override
     public void onRifaSaved() {
         Snackbar.make(mainContent, R.string.rifamain_notice_saved, Snackbar.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onRifaUpdate() {
-        adapter.notifyDataSetChanged();
     }
 
     @Override

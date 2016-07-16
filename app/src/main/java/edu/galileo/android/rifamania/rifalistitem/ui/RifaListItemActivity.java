@@ -1,4 +1,4 @@
-package edu.galileo.android.rifamania.rifalistitem;
+package edu.galileo.android.rifamania.rifalistitem.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

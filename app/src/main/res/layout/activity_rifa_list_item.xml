@@ -5,6 +5,6 @@
     android:id="@+id/activity_rifa_list_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.galileo.android.rifamania.rifalistitem.RifaListItemActivity">
+    tools:context="edu.galileo.android.rifamania.rifalistitem.ui.RifaListItemActivity">
 
 </android.support.constraint.ConstraintLayout>

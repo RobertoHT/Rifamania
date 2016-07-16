@@ -10,7 +10,6 @@ import edu.galileo.android.rifamania.entities.Rifa;
 
 public interface RifaMainView {
     void onRifaSaved();
-    void onRifaUpdate();
     void onRifaDeleted(Rifa rifa);
     void setRifa(Rifa rifa);
     void setRifas(List<Rifa> rifas);
