@@ -1,6 +1,7 @@
 package edu.galileo.android.rifamania.rifalistitem;
 
 import edu.galileo.android.rifamania.entities.ItemRifa;
+import edu.galileo.android.rifamania.rifalistitem.events.RifaListItemEvent;
 import edu.galileo.android.rifamania.rifalistitem.ui.RifaListItemView;
 
 /**
@@ -14,7 +15,7 @@ public interface RifaListItemPresenter {
     void getItemsRifa(int id);
     void saveItemRifa(ItemRifa itemRifa);
     void updateItemRifa(ItemRifa itemRifa);
-    void onEventListThread();
+    void onEventListThread(RifaListItemEvent event);
 
     RifaListItemView getView();
 }
