@@ -52,6 +52,11 @@ public class RifaListAdapter extends RecyclerView.Adapter<RifaListAdapter.ViewHo
         return itemRifaList.size();
     }
 
+    public void setItemRifa(ItemRifa itemRifa){
+        itemRifaList.add(itemRifa);
+        notifyDataSetChanged();
+    }
+
     public void setItemsRifa(List<ItemRifa> itemsRifa){
         this.itemRifaList = itemsRifa;
         notifyDataSetChanged();

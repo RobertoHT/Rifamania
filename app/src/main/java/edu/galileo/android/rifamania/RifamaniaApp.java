@@ -9,6 +9,12 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 
 import edu.galileo.android.rifamania.libs.di.LibsModule;
 import edu.galileo.android.rifamania.login.ui.LoginActivity;
+import edu.galileo.android.rifamania.rifalistitem.adapters.OnItemListClickListener;
+import edu.galileo.android.rifamania.rifalistitem.di.DaggerRifaListItemComponent;
+import edu.galileo.android.rifamania.rifalistitem.di.RifaListItemComponent;
+import edu.galileo.android.rifamania.rifalistitem.di.RifaListItemModule;
+import edu.galileo.android.rifamania.rifalistitem.ui.RifaListItemActivity;
+import edu.galileo.android.rifamania.rifalistitem.ui.RifaListItemView;
 import edu.galileo.android.rifamania.rifamain.adapters.OnItemCLickListener;
 import edu.galileo.android.rifamania.rifamain.di.DaggerRifaMainComponent;
 import edu.galileo.android.rifamania.rifamain.di.RifaMainComponent;
@@ -55,6 +61,14 @@ public class RifamaniaApp extends Application {
                 .builder()
                 .libsModule(new LibsModule(activity))
                 .rifaMainModule(new RifaMainModule(view, onItemCLickListener))
+                .build();
+    }
+
+    public RifaListItemComponent getRifaListItemComponent(RifaListItemActivity activity, RifaListItemView view, OnItemListClickListener onItemListClickListener){
+        return DaggerRifaListItemComponent
+                .builder()
+                .libsModule(new LibsModule(activity))
+                .rifaListItemModule(new RifaListItemModule(view, onItemListClickListener))
                 .build();
     }
 }

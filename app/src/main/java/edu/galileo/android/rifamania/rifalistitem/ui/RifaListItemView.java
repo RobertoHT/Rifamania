@@ -9,6 +9,7 @@ import edu.galileo.android.rifamania.entities.ItemRifa;
  */
 
 public interface RifaListItemView {
+    void onItemRifaSaved();
     void onItemRifaUpdated(ItemRifa item);
     void setItemRifa(ItemRifa item);
     void setItemsRifa(List<ItemRifa> items);

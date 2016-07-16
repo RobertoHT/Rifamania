@@ -33,8 +33,6 @@ public class RifaMainActivity extends AppCompatActivity implements RifaMainView,
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.appbar)
-    AppBarLayout appbar;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.plus)
@@ -122,14 +120,6 @@ public class RifaMainActivity extends AppCompatActivity implements RifaMainView,
         adapter.setRifas(rifas);
     }
 
-    public RifaMainPresenter getPresenter() {
-        return component.getPresenter();
-    }
-
-    public RifasAdapter getAdapter() {
-        return component.getAdapter();
-    }
-
     @Override
     public void onItemCLick(Rifa rifa) {
         navigateToItemsRifa(rifa);
@@ -156,14 +146,20 @@ public class RifaMainActivity extends AppCompatActivity implements RifaMainView,
     }
 
     @Override
-    public void onDialogNegativeClick() {
-
-    }
+    public void onDialogNegativeClick() {}
 
     private void navigateToItemsRifa(Rifa rifa){
         Intent intent = new Intent(this, RifaListItemActivity.class);
         intent.putExtra("id",rifa.getId());
         intent.putExtra("nombre",rifa.getName());
         startActivity(intent);
+    }
+
+    public RifaMainPresenter getPresenter() {
+        return component.getPresenter();
+    }
+
+    public RifasAdapter getAdapter() {
+        return component.getAdapter();
     }
 }

@@ -54,10 +54,15 @@ public class RifaListItemPresenterImpl implements RifaListItemPresenter {
         if(this.view != null){
             switch (event.getType()){
                 case RifaListItemEvent.READ_EVENT:
+                    view.setItemsRifa(event.getItemRifaList());
                     break;
                 case RifaListItemEvent.SAVE_EVENT:
+                    view.onItemRifaSaved();
+                    view.setItemRifa(event.getItemRifa());
                     break;
                 case RifaListItemEvent.UPDATE_EVENT:
+                    ItemRifa itemRifa = event.getItemRifaList().get(0);
+                    view.onItemRifaUpdated(itemRifa);
                     break;
             }
         }
