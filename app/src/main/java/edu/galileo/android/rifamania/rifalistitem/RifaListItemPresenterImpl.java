@@ -51,6 +51,11 @@ public class RifaListItemPresenterImpl implements RifaListItemPresenter {
     }
 
     @Override
+    public void getWin(int id) {
+        interactor.getWin(id);
+    }
+
+    @Override
     @Subscribe
     public void onEventListThread(RifaListItemEvent event) {
         if(this.view != null){
@@ -65,6 +70,9 @@ public class RifaListItemPresenterImpl implements RifaListItemPresenter {
                 case RifaListItemEvent.UPDATE_EVENT:
                     ItemRifa itemRifa = event.getItemRifa();
                     view.onItemRifaUpdated(itemRifa);
+                    break;
+                case RifaListItemEvent.WIN_EVENT:
+                    view.showWin(event.getItemRifa());
                     break;
             }
         }

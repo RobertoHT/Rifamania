@@ -16,6 +16,7 @@ public class RifaListItemEvent {
     public static final int READ_EVENT = 0;
     public static final int SAVE_EVENT = 1;
     public static final int UPDATE_EVENT = 2;
+    public static final int WIN_EVENT = 3;
 
     public int getType() {
         return type;

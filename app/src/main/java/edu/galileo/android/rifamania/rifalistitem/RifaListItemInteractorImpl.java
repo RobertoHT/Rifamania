@@ -27,4 +27,9 @@ public class RifaListItemInteractorImpl implements RifaListItemInteractor {
     public void updateItemRifa(ItemRifa itemRifa) {
         repository.updateItemRifa(itemRifa);
     }
+
+    @Override
+    public void getWin(int id) {
+        repository.getWin(id);
+    }
 }

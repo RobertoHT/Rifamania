@@ -1,10 +1,9 @@
 package edu.galileo.android.rifamania.rifalistitem;
 
-import com.raizlabs.android.dbflow.list.FlowCursorList;
-import com.raizlabs.android.dbflow.sql.language.Condition;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.List;
+import java.util.Random;
 
 import edu.galileo.android.rifamania.entities.ItemRifa;
 import edu.galileo.android.rifamania.entities.ItemRifa_Table;
@@ -24,10 +23,8 @@ public class RifaListItemRepositoryImpl implements RifaListItemRepository {
 
     @Override
     public void getSavedItemsRifa(int id) {
-        //FlowCursorList storedItemsRifa = new FlowCursorList<ItemRifa>(false, ItemRifa.class);
         List<ItemRifa> storedItemsRifa = new Select().from(ItemRifa.class).where(ItemRifa_Table.id_rifa.eq(id)).queryList();
         post(RifaListItemEvent.READ_EVENT, storedItemsRifa);
-        //storedItemsRifa.close();
     }
 
     @Override
@@ -40,6 +37,19 @@ public class RifaListItemRepositoryImpl implements RifaListItemRepository {
     public void updateItemRifa(ItemRifa itemRifa) {
         itemRifa.update();
         post(RifaListItemEvent.UPDATE_EVENT, itemRifa);
+    }
+
+    @Override
+    public void getWin(int id) {
+        List<ItemRifa> storedItemsRifa = new Select()
+                                                .from(ItemRifa.class)
+                                                .where(ItemRifa_Table.id_rifa.eq(id))
+                                                .and(ItemRifa_Table.paid.eq(true))
+                                                .queryList();
+        Random r = new Random();
+        int number = r.nextInt((storedItemsRifa.size() - 1) + 1 ) + 1;
+        ItemRifa currentItemRifa = storedItemsRifa.get(number - 1);
+        post(RifaListItemEvent.WIN_EVENT, currentItemRifa);
     }
 
     private void post(int type, ItemRifa itemRifa){

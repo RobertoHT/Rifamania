@@ -3,14 +3,19 @@
 
     <string name="login.error">Imposible iniciar sesión %s</string>
     <string name="login.cancel.error">Inicio de sesión cancelado</string>
-
     <string name="rifa.data.error">Imposible obtener información %s</string>
+
     <string name="rifamain.notice.saved">Guardado exitosamente</string>
+
     <string name="rifalistitem.checkbox">Pagado</string>
+    <string name="rifalistitem.win">Ganador</string>
 
     <string name="dialog.name">Nombre:</string>
     <string name="dialog.date">Fecha:</string>
     <string name="dialog.cost">Precio:</string>
+
+    <string name="dialog.win.title">¡FELICIDADES!</string>
+    <string name="dialog.win.body">has sido el ganador de una\n%s</string>
 
     <string name="dialog.list.name">Nombre de la persona:</string>
 

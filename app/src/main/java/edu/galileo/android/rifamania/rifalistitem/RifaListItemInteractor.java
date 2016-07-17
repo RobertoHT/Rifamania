@@ -10,4 +10,5 @@ public interface RifaListItemInteractor {
     void getItemsRifa(int id);
     void saveItemRifa(ItemRifa itemRifa);
     void updateItemRifa(ItemRifa itemRifa);
+    void getWin(int id);
 }

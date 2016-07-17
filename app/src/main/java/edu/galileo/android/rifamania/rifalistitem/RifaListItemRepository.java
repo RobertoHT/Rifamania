@@ -10,4 +10,5 @@ public interface RifaListItemRepository {
     void getSavedItemsRifa(int id);
     void saveItemRifa(ItemRifa itemRifa);
     void updateItemRifa(ItemRifa itemRifa);
+    void getWin(int id);
 }

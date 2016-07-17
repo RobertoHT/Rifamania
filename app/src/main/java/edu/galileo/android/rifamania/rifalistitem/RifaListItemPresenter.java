@@ -15,6 +15,7 @@ public interface RifaListItemPresenter {
     void getItemsRifa(int id);
     void saveItemRifa(ItemRifa itemRifa);
     void updateItemRifa(ItemRifa itemRifa);
+    void getWin(int id);
     void onEventListThread(RifaListItemEvent event);
 
     RifaListItemView getView();

@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 
 import edu.galileo.android.rifamania.R;
 import edu.galileo.android.rifamania.entities.ItemRifa;
-import edu.galileo.android.rifamania.rifamain.dialog.ClickListenerDialog;
 
 /**
  * Created by Roberto Hdez. on 16/07/16.
@@ -43,7 +41,6 @@ public class RifaListItemDialog extends DialogFragment {
                         itemRifa = new ItemRifa();
                         itemRifa.setName(name);
                         itemRifa.setPaid(check);
-                        Log.d("DIALOG ITEM",name + " - " + check);
                         listener.onDialogPositiveClick(itemRifa);
                     }
                 })

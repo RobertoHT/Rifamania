@@ -13,4 +13,5 @@ public interface RifaListItemView {
     void onItemRifaUpdated(ItemRifa item);
     void setItemRifa(ItemRifa item);
     void setItemsRifa(List<ItemRifa> items);
+    void showWin(ItemRifa item);
 }

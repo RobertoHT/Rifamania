@@ -7,7 +7,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
@@ -44,7 +43,6 @@ public class RifaMainDialog extends DialogFragment{
                         txtName = (EditText) view.findViewById(R.id.dialogName);
                         txtCost = (EditText) view.findViewById(R.id.dialogCost);
                         String nombre = txtName.getText().toString();
-                        Log.d("COSTO",txtCost.getText().toString());
                         int cost = Integer.parseInt(txtCost.getText().toString());
                         listener.onDialogPositiveClick(nombre,cost,fecha);
                     }
@@ -79,7 +77,6 @@ public class RifaMainDialog extends DialogFragment{
 
 
     public void dateofPicker(){
-        Log.d("SALUDO", "saludo");
         DateDialog dateDialog = new DateDialog();
         dateDialog.show(getFragmentManager(), "Simple Date");
     }

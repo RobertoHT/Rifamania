@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.RelativeLayout;
 
 import com.facebook.AccessToken;
@@ -55,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
         callbackManager = CallbackManager.Factory.create();
         btnLogin.setReadPermissions(Arrays.asList("public_profile","email"));
-        //btnLogin.setPublishPermissions(Arrays.asList("publish_actions"));
         btnLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -64,7 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                             public void onCompleted(JSONObject object, GraphResponse response) {
                                 try {
                                     prefs.edit().putString(RifamaniaApp.NAME_KEY,object.getString("name")).commit();
-                                    Log.d("USER",object.getString("name"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

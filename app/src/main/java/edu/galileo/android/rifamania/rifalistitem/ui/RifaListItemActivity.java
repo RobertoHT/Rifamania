@@ -2,7 +2,6 @@ package edu.galileo.android.rifamania.rifalistitem.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,7 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.List;
 
@@ -26,6 +26,7 @@ import edu.galileo.android.rifamania.rifalistitem.adapters.RifaListAdapter;
 import edu.galileo.android.rifamania.rifalistitem.di.RifaListItemComponent;
 import edu.galileo.android.rifamania.rifalistitem.dialog.ClickItemListenerDialog;
 import edu.galileo.android.rifamania.rifalistitem.dialog.RifaListItemDialog;
+import edu.galileo.android.rifamania.rifalistitem.dialog.WinDialog;
 
 public class RifaListItemActivity extends AppCompatActivity implements RifaListItemView, OnItemListClickListener, ClickItemListenerDialog {
     @Bind(R.id.toolbar)
@@ -41,6 +42,7 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
     private RifaListItemPresenter presenter;
     private RifaListItemComponent component;
     private RifaListItemDialog dialog;
+    private WinDialog winDialog;
 
     private String nameItem;
     private int idItem;
@@ -54,7 +56,6 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
         Intent intent = getIntent();
         idItem = intent.getIntExtra("id", 0);
         nameItem = intent.getStringExtra("nombre");
-        Log.d("DATOS", idItem + " - " + nameItem);
 
         setupToolbar();
         setupInjection();
@@ -88,6 +89,25 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_item_list, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_win){
+            getWin();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void getWin() {
+        presenter.getWin(idItem);
+    }
+
+    @Override
     public void onItemRifaSaved() {
         Snackbar.make(mainListContent, R.string.rifamain_notice_saved, Snackbar.LENGTH_SHORT).show();
     }
@@ -108,13 +128,20 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
     }
 
     @Override
+    public void showWin(ItemRifa item) {
+        winDialog = new WinDialog();
+        String body = String.format(getString(R.string.dialog_win_body),nameItem);
+        winDialog.setParameters(item.getName(), body);
+        winDialog.show(getFragmentManager(), "Simple Dialog");
+    }
+
+    @Override
     public void onUpdateClick(ItemRifa itemRifa) {
         presenter.updateItemRifa(itemRifa);
     }
 
     @OnClick(R.id.plusList)
     public void addItemRifa(){
-        Log.d("CLICK ITEM","msg");
         dialog = new RifaListItemDialog();
         dialog.show(getFragmentManager(), "Simple Dialog");
     }
@@ -129,8 +156,6 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
 
     @Override
     public void onDialogPositiveClick(ItemRifa itemRifa) {
-        Log.d("ID PRINCIPAL", idItem+"");
-        Log.d("ITEMRIFA PRINCIPAL", itemRifa.getName());
         itemRifa.setId_rifa(idItem);
         presenter.saveItemRifa(itemRifa);
     }
