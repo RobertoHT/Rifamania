@@ -36,19 +36,21 @@ public class RifaListItemDialog extends DialogFragment {
                 .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //listener.onDialogPositiveClick(itemRifa);
                         txtName = (EditText)view.findViewById(R.id.txtDialogItemName);
                         checkPay = (CheckBox)view.findViewById(R.id.checkDialogItemPay);
                         String name = txtName.getText().toString();
                         boolean check = checkPay.isChecked();
+                        itemRifa = new ItemRifa();
+                        itemRifa.setName(name);
+                        itemRifa.setPaid(check);
                         Log.d("DIALOG ITEM",name + " - " + check);
+                        listener.onDialogPositiveClick(itemRifa);
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {}
                 });
-
         createAlert.setView(view);
 
         return createAlert.create();

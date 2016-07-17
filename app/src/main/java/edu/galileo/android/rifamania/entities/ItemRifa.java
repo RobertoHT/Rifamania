@@ -12,10 +12,10 @@ import edu.galileo.android.rifamania.db.RifasDatabase;
  */
 @Table(database = RifasDatabase.class)
 public class ItemRifa extends BaseModel{
-    @PrimaryKey(autoincrement = true) private int id;
-    @Column private String name;
-    @Column private boolean paid;
-    @Column private int id_rifa;
+    @PrimaryKey(autoincrement = true) public int id;
+    @Column public String name;
+    @Column public boolean paid;
+    @Column public int id_rifa;
 
     public int getId() {
         return id;

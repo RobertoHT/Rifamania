@@ -71,6 +71,7 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
     }
 
     private void setupToolbar() {
+        toolbar.setTitle(nameItem);
         setSupportActionBar(toolbar);
     }
 
@@ -128,6 +129,9 @@ public class RifaListItemActivity extends AppCompatActivity implements RifaListI
 
     @Override
     public void onDialogPositiveClick(ItemRifa itemRifa) {
-
+        Log.d("ID PRINCIPAL", idItem+"");
+        Log.d("ITEMRIFA PRINCIPAL", itemRifa.getName());
+        itemRifa.setId_rifa(idItem);
+        presenter.saveItemRifa(itemRifa);
     }
 }

@@ -26,6 +26,9 @@ import edu.galileo.android.rifamania.rifamain.ui.RifaMainView;
  * Created by praxis on 13/07/16.
  */
 public class RifamaniaApp extends Application {
+    public final static String NAME_KEY = "name";
+    public final static String SHARED_PREFERENCES_NAME = "UserPrefs";
+
     @Override
     public void onCreate() {
         super.onCreate();

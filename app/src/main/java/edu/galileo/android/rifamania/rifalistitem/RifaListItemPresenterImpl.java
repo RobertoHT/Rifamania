@@ -45,6 +45,8 @@ public class RifaListItemPresenterImpl implements RifaListItemPresenter {
 
     @Override
     public void updateItemRifa(ItemRifa itemRifa) {
+        boolean pay = itemRifa.getPaid();
+        itemRifa.setPaid(!pay);
         interactor.updateItemRifa(itemRifa);
     }
 
@@ -61,7 +63,7 @@ public class RifaListItemPresenterImpl implements RifaListItemPresenter {
                     view.setItemRifa(event.getItemRifa());
                     break;
                 case RifaListItemEvent.UPDATE_EVENT:
-                    ItemRifa itemRifa = event.getItemRifaList().get(0);
+                    ItemRifa itemRifa = event.getItemRifa();
                     view.onItemRifaUpdated(itemRifa);
                     break;
             }

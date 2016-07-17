@@ -1,10 +1,13 @@
 package edu.galileo.android.rifamania.rifalistitem;
 
 import com.raizlabs.android.dbflow.list.FlowCursorList;
+import com.raizlabs.android.dbflow.sql.language.Condition;
+import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.List;
 
 import edu.galileo.android.rifamania.entities.ItemRifa;
+import edu.galileo.android.rifamania.entities.ItemRifa_Table;
 import edu.galileo.android.rifamania.libs.base.EventBus;
 import edu.galileo.android.rifamania.rifalistitem.events.RifaListItemEvent;
 
@@ -21,9 +24,10 @@ public class RifaListItemRepositoryImpl implements RifaListItemRepository {
 
     @Override
     public void getSavedItemsRifa(int id) {
-        FlowCursorList storedItemsRifa = new FlowCursorList<ItemRifa>(false, ItemRifa.class);
-        post(RifaListItemEvent.READ_EVENT, storedItemsRifa.getAll());
-        storedItemsRifa.close();
+        //FlowCursorList storedItemsRifa = new FlowCursorList<ItemRifa>(false, ItemRifa.class);
+        List<ItemRifa> storedItemsRifa = new Select().from(ItemRifa.class).where(ItemRifa_Table.id_rifa.eq(id)).queryList();
+        post(RifaListItemEvent.READ_EVENT, storedItemsRifa);
+        //storedItemsRifa.close();
     }
 
     @Override
