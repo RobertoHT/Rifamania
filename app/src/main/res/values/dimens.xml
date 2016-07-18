@@ -5,4 +5,5 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="plus_margin">16dp</dimen>
     <dimen name="row_icons_padding">8dp</dimen>
+    <dimen name="item_margin">4dp</dimen>
 </resources>

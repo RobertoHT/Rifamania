@@ -55,6 +55,11 @@ public class RifaMainDialog extends DialogFragment{
                 });
 
         txtDate = (TextView) view.findViewById(R.id.dialogDate);
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        setDate(year, month, day);
 
         imgCalendar = (ImageButton) view.findViewById(R.id.calendarButton);
         imgCalendar.setOnClickListener(new View.OnClickListener() {

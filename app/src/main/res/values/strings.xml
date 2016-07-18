@@ -15,7 +15,7 @@
     <string name="dialog.cost">Precio:</string>
 
     <string name="dialog.win.title">¡FELICIDADES!</string>
-    <string name="dialog.win.body">has sido el ganador de una\n%s</string>
+    <string name="dialog.win.body">has sido el ganador de\n%s</string>
 
     <string name="dialog.list.name">Nombre de la persona:</string>
 

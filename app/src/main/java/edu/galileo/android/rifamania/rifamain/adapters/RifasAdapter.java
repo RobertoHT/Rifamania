@@ -38,8 +38,8 @@ public class RifasAdapter extends RecyclerView.Adapter<RifasAdapter.ViewHolder> 
         Rifa currentRifa = rifaList.get(position);
 
         holder.title.setText(currentRifa.getName());
-        holder.date.setText(currentRifa.getDate());
-        holder.cost.setText(String.valueOf(currentRifa.getCost()));
+        holder.date.setText("Fecha: "+currentRifa.getDate());
+        holder.cost.setText("Costo: "+String.valueOf(currentRifa.getCost()));
 
         holder.setOnItemClickListener(currentRifa, onItemClickListener);
     }
